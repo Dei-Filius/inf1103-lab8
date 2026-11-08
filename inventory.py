@@ -25,6 +25,7 @@ class Inventory:
         if len(self) > 0:
             for _, product in self.__products.items():
                 product.display_information()
+                print("^" + product.get_fulfilment_info())
                 print()
         else:
             print("Nothing...")

@@ -257,12 +257,12 @@ def main() -> None:
         inventory: Inventory = load_inventory()
 
         menu: list[dict] = [
+            {"text": "Exit", "action": lambda: exit_app(inventory)},
             {"text": "Display All Products", "action": lambda: inventory.display_all()},
             {"text": "Add Product", "action": lambda: add_product(inventory)},
             {"text": "Update Stock", "action": lambda: update_stock(inventory)},
             {"text": "Search Product", "action": lambda: find_product(inventory)},
             {"text": "Save Inventory", "action": lambda: save_inventory(inventory)},
-            {"text": "Exit", "action": lambda: exit_app(inventory)},
         ]
 
         print("""
@@ -273,9 +273,9 @@ INVENTORY MANAGEMENT SYSTEM
         while True:
             try:
                 display_menu(menu)
-                option = get_int_input("Enter option: ", 1, len(menu))
+                option = get_int_input("Enter option: ", 0, len(menu) - 1)
                 try:
-                    menu[option - 1]["action"]()
+                    menu[option]["action"]()
                 except KeyboardInterrupt:
                     continue
             except KeyboardInterrupt:

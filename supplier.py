@@ -7,7 +7,7 @@ class Supplier:
     def display_information(self) -> None:
         print(f"Supplier ID: {self.__supplier_id}", end=" | ")
         print(f"Name: {self.__name}", end=" | ")
-        print(f"Email: ${self.__contact_email}")
+        print(f"Email: {self.__contact_email}")
 
     def to_dict(self) -> dict:
         return {
