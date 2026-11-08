@@ -9,7 +9,7 @@ class Product(ABC):
 
     def __init__(
         self, product_id: str, name: str, price: float, stock: int, supplier: Supplier
-    ):
+    ) -> None:
         self.__product_id: str = product_id
         self.__name: str = name
         self.__price: float = price
@@ -39,9 +39,13 @@ class Product(ABC):
             "name": self.__name,
             "price": self.__price,
             "stock": self.__stock,
-            "supplier": self.supplier.to_dict()
+            "supplier": self.supplier.to_dict(),
         }
 
     @property
     def product_id(self) -> str:
         return self.__product_id
+
+    @property
+    def price(self) -> float:
+        return self.__price

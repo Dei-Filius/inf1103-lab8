@@ -1,0 +1,11 @@
+# 2.2 
+deleting a variable to a supplier object only removes that variable's reference. The object still exists. Each Product object is still able to retrieve the supplier object becuase they still hold a reference regardless of that deleted variable
+
+# 3.2
+Product objects still "work" after removal from the Inventory because only a reference to the Product object is stored in Inventory.
+
+# 4.3
+Assuming "add the same Product" means the same Product object, then there should still be 1. Since each Order object will instantiation their own OrderLine, then there will be 2 OrderLine objects.
+
+# 7.2
+

@@ -14,7 +14,7 @@ class PhysicalProduct(Product, CanBeShipped):
         stock: int,
         weight: float,
         supplier: Supplier,
-    ):
+    ) -> None:
         super().__init__(product_id, name, price, stock, supplier)
         self.__weight: float = weight
 
