@@ -8,7 +8,7 @@ from supplier import Supplier
 # 2.2
 # Deleting a variable to a supplier object only removes that variable's
 # reference. The object still exists. Each Product object is still able to
-# retrieve the supplier object becuase they still hold a reference regardless of
+# retrieve the supplier object because they still hold a reference regardless of
 # that deleted variable.
 
 print("\n===TEST 2.2===")
@@ -95,7 +95,7 @@ except Exception as err:
 # behave like weight attribute which is defined in PhysicalProduct class and not
 # in Product class. This of course gives rise to the need for type checking
 # before users can update the stock of a Product. However this check is done
-# outside of the Inventory class's perview.
+# outside of the Inventory class's purview.
 
 
 # 7.2
