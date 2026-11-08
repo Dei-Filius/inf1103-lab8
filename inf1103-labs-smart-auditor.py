@@ -1,11 +1,14 @@
 import json
+import re
+from datetime import datetime
 from pathlib import Path
 from typing import Literal
-import re
 
 from digital_product import DigitalProduct
 from inventory import Inventory
+from order import Order
 from physical_product import PhysicalProduct
+from product import Product
 from supplier import Supplier
 
 INVENTORY_FILE_PATH: str = "data/inventory.json"
@@ -124,18 +127,36 @@ def update_stock(inventory: Inventory) -> None:
     print("------------------------------------------------")
 
 
-def find_product(inventory: Inventory) -> None:
+def find_product(inventory: Inventory) -> Product | None:
     print()
     product_id = get_product_id_input()
     product = inventory.find_product(product_id)
     if product is None:
         print("This Product is not in Inventory.")
-        return
+        return None
 
     print("Product Found!")
     print("------------------------------------------------")
     product.display_information()
     print("------------------------------------------------")
+    return product
+
+
+def calculate_order(inventory: Inventory) -> None:
+    order_id = f"O{int(datetime.now().timestamp())}"
+    order = Order(order_id)
+    print("Ctrl+C to stop adding to order.")
+    try:
+        while True:
+            product = find_product(inventory)
+            if product is not None:
+                quantity = get_int_input("Quantity: ", 1)
+                order.add_order_line(product, quantity)
+                print("Added!")
+    except KeyboardInterrupt:
+        pass
+    print()
+    order.display()
 
 
 def exit_app(inventory: Inventory):
@@ -247,7 +268,7 @@ def get_product_type_input() -> Literal["PHYSICAL", "DIGITAL"]:
 def display_menu(menu: list[dict]) -> None:
     print()
     print("----------- MENU -----------")
-    for i, page in enumerate(menu, 1):
+    for i, page in enumerate(menu, 0):
         print(f"{i}. {page["text"]}")
     print("----------------------------")
 
@@ -263,6 +284,7 @@ def main() -> None:
             {"text": "Update Stock", "action": lambda: update_stock(inventory)},
             {"text": "Search Product", "action": lambda: find_product(inventory)},
             {"text": "Save Inventory", "action": lambda: save_inventory(inventory)},
+            {"text": "Order Calculator", "action": lambda: calculate_order(inventory)},
         ]
 
         print("""
