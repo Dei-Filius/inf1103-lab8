@@ -1,0 +1,54 @@
+[
+    {
+        "id": "P001",
+        "name": "Laptop",
+        "price": 1200.0,
+        "stock": 15,
+        "supplier": {
+            "id": "S001",
+            "name": "Lenovo",
+            "contact_email": "sales@lenovo.com"
+        },
+        "type": "PHYSICAL",
+        "weight": 1.5
+    },
+    {
+        "id": "P002",
+        "name": "Mouse",
+        "price": 25.5,
+        "stock": 40,
+        "supplier": {
+            "id": "S002",
+            "name": "Logitech",
+            "contact_email": "sales@logitech.com"
+        },
+        "type": "PHYSICAL",
+        "weight": 0.1
+    },
+    {
+        "id": "P003",
+        "name": "Keyboard",
+        "price": 45.0,
+        "stock": 25,
+        "supplier": {
+            "id": "S003",
+            "name": "Keychron",
+            "contact_email": "sales@keychron.com"
+        },
+        "type": "PHYSICAL",
+        "weight": 0.75
+    },
+    {
+        "id": "P004",
+        "name": "Davinci",
+        "price": 100.0,
+        "stock": 50,
+        "supplier": {
+            "id": "S001",
+            "name": "Blackmagic Design",
+            "contact_email": "sales@blackmagicdesign.com"
+        },
+        "type": "DIGITAL",
+        "download_size": 1000
+    }
+]
